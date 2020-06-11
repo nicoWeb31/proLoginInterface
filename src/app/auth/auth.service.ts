@@ -23,9 +23,22 @@ export class AuthService {
 
     //let headers = new HttpHeaders({'Access-Control-Allow-Origin':'*'});
     
-    const body = (`client_id=${username}&client_secret=${password}&grant_type=client_credentials`);
+    const body = {"grant_type":"password","username":username,"password":password,"client_id":"prosoluce_gui"};
+    const body2 = {
+      "grant_type":"password",
+      "username":"testuser",
+      "password":"testpass",
+      "client_id":"prosoluce_gui"
+  }
     console.log(this.url);
     return this.http.post<any>(this.url,body)
+  }
+
+
+  //testApiplaceholder
+
+  getPost(){
+    return this.http.get('https://jsonplaceholder.typicode.com/posts');
   }
 
 

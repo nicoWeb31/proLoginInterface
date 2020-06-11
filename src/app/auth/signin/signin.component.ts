@@ -9,6 +9,10 @@ import { AuthService} from '../auth.service';
 })
 export class SigninComponent implements OnInit {
 
+
+  token = '';
+
+
   authForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('') 
@@ -19,6 +23,11 @@ export class SigninComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    //testgetPost
+    this.authServ.getPost().subscribe({
+      next: value => console.log(value)
+    })
+ 
   }
   
   
@@ -29,12 +38,17 @@ export class SigninComponent implements OnInit {
       return; // implementer les validators
     }
 
-    this.authServ.Signin(this.authForm.value.username,this.authForm.value.password).subscribe(
-      value => console.log(value)
+    this.authServ.Signin(this.authForm.value.username,this.authForm.value.password).subscribe({
+      
+      next: value => this.token = value.access_token,
+      error: err=>console.log(err)
+    }
     );
+    localStorage.setItem('token',this.token)
     
-    //console.log(this.authForm.value.username)
-  }
+    
+    console.log(this.authForm.value)
+}
 
 
 }
