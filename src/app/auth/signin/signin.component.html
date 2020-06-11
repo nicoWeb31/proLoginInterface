@@ -1,0 +1,24 @@
+<h3>Connect Account</h3>
+
+<form [formGroup]="authForm" class="ui form"  (ngSubmit)="signin()">
+
+    <div class="field">
+        <label> Username</label>
+        <input formControlName="username"/>
+    </div>
+
+    <div class="field">
+        <label>Password</label>
+        <input formControlName="password"/>
+    </div>
+       
+    <button class="ui submit button secondary" > Submit</button>
+    
+</form>
+
+<!-- debug -->
+<!-- <div>Form Content : {{ authForm.value | json}}</div> -->
+
+
+
+
