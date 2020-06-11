@@ -40,11 +40,14 @@ export class SigninComponent implements OnInit {
 
     this.authServ.Signin(this.authForm.value.username,this.authForm.value.password).subscribe({
       
-      next: value => this.token = value.access_token,
+      next: (value) => {
+        this.token = value.access_token
+        localStorage.setItem('token',this.token)
+      
+      },
       error: err=>console.log(err)
     }
     );
-    localStorage.setItem('token',this.token)
     
     
     console.log(this.authForm.value)

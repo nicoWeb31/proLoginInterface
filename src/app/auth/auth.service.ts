@@ -21,7 +21,7 @@ export class AuthService {
   Signin(username: String,password: string){
 
 
-    //let headers = new HttpHeaders({'Access-Control-Allow-Origin':'*'});
+    let headers = new HttpHeaders({'Access-Control-Allow-Origin':'*'});
     
     const body = {"grant_type":"password","username":username,"password":password,"client_id":"prosoluce_gui"};
     const body2 = {
@@ -31,7 +31,7 @@ export class AuthService {
       "client_id":"prosoluce_gui"
   }
     console.log(this.url);
-    return this.http.post<any>(this.url,body)
+    return this.http.post<any>(this.url,body,{headers})
   }
 
 
