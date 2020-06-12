@@ -12,6 +12,8 @@ export class SigninComponent implements OnInit {
 
 
   token = '';
+  refreshToken ='';
+
 
 
   authForm = new FormGroup({
@@ -44,8 +46,14 @@ export class SigninComponent implements OnInit {
       
       next: (value) => {
         this.token = value.access_token;
-        localStorage.setItem('token',this.token);
+        this.refreshToken = value.refresh_token;
+
+        //creation de la session
+        localStorage.setItem('access-token',this.token);
+        localStorage.setItem('refresh-token',this.refreshToken);
+
         localStorage.setItem('user',this.authForm.value.username);
+
         this._router.navigateByUrl('/params');
 
 

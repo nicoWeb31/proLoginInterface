@@ -24,3 +24,6 @@ export class TokenInterceptorService implements HttpInterceptor{
     return next.handle(tokenizedReq)
   }
 }
+
+
+//implementer cette methode

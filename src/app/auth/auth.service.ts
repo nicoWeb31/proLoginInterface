@@ -41,12 +41,12 @@ export class AuthService {
  //loggedIn
  loggedIn(){
 
-   return !! localStorage.getItem('token');
+   return !! localStorage.getItem('access-token');
  }
 
  //gettoken
   getToken(){
-   return localStorage.getItem('token');
+   return localStorage.getItem('access-token');
 }
 
   //getUserName
@@ -57,7 +57,8 @@ export class AuthService {
   //logout
   logoutUser(){
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem('access-token');
+    localStorage.removeItem('refresh-token');
     this.router.navigate(['/'])
   }
 
