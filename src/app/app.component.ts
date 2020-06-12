@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {  AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'LoginInterFace';
+
+  log: boolean
+
+  constructor(private _authServ: AuthService){}
+
+  
+  
+  
+  ngOnInit() {
+    
+    this.log = this._authServ.loggedIn();
+
+  }
+
+
+  logout(){
+    this._authServ.logoutUser();
+  }
+ 
+    
+
+
 }

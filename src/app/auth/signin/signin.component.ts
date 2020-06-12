@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { AuthService} from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -19,14 +20,15 @@ export class SigninComponent implements OnInit {
   })
 
   constructor(
-    private authServ: AuthService
+    private _authServ: AuthService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
-    //testgetPost
-    this.authServ.getPost().subscribe({
-      next: value => console.log(value)
-    })
+    // //testgetPost
+    // this._authServ.getPost().subscribe({
+    // next: value => console.log(value)
+    // })
  
   }
   
@@ -38,11 +40,15 @@ export class SigninComponent implements OnInit {
       return; // implementer les validators
     }
 
-    this.authServ.Signin(this.authForm.value.username,this.authForm.value.password).subscribe({
+    this._authServ.Signin(this.authForm.value.username,this.authForm.value.password).subscribe({
       
       next: (value) => {
-        this.token = value.access_token
-        localStorage.setItem('token',this.token)
+        this.token = value.access_token;
+        localStorage.setItem('token',this.token);
+        localStorage.setItem('user',this.authForm.value.username);
+        this._router.navigateByUrl('/params');
+
+
       
       },
       error: err=>console.log(err)
