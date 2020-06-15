@@ -42,19 +42,20 @@ export class SigninComponent implements OnInit {
       return; // implementer les validators
     }
 
-    this._authServ.Signin(this.authForm.value.username,this.authForm.value.password).subscribe({
+    this._authServ.Signin(this.authForm.value).subscribe({
       
       next: (value) => {
-        this.token = value.access_token;
-        this.refreshToken = value.refresh_token;
+        // this.token = value.access_token;
+        // this.refreshToken = value.refresh_token;
 
         //creation de la session
         // localStorage.setItem('access-token',this.token);
         // localStorage.setItem('refresh-token',this.refreshToken);
         // localStorage.setItem('user',this.authForm.value.username);
 
+        console.log(value);
 
-        this._router.navigateByUrl('/params');
+        this._router.navigate(['/params']);
 
 
       

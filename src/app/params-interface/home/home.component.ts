@@ -13,13 +13,8 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
- //testgetPost
-    this._InterServ.getPost().subscribe({
-    next: value => console.log(value)
-    })
-
-
-    //testnumber 
+ 
+    //testnumber interceptor + refreshtoken
     this._InterServ.getNumberTest().subscribe({
       next: value => console.log(value),
       error: err => console.error(err)

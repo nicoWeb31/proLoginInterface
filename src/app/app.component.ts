@@ -17,7 +17,7 @@ export class AppComponent {
   
   ngOnInit() {
     
-    this.log = this._authServ.loggedIn();
+    this.log = this._authServ.isLoggedIn();
 
   }
 

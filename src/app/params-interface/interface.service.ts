@@ -12,11 +12,7 @@ export class InterfaceService {
     private http: HttpClient
   ) { }
 
-  //testApiplaceholder
-  getPost(){
-    return this.http.get('https://jsonplaceholder.typicode.com/posts');
-  }
-
+ 
   getNumberTest(){
     return this.http.get(this.urlGetNumber);
   }
