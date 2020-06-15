@@ -49,10 +49,10 @@ export class SigninComponent implements OnInit {
         this.refreshToken = value.refresh_token;
 
         //creation de la session
-        localStorage.setItem('access-token',this.token);
-        localStorage.setItem('refresh-token',this.refreshToken);
+        // localStorage.setItem('access-token',this.token);
+        // localStorage.setItem('refresh-token',this.refreshToken);
+        // localStorage.setItem('user',this.authForm.value.username);
 
-        localStorage.setItem('user',this.authForm.value.username);
 
         this._router.navigateByUrl('/params');
 
